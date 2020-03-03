@@ -12,22 +12,28 @@ let package = Package(
 		.watchOS(.v6)
 	],
 	products: [
-			// Products define the executables and libraries produced by a package, and make them visible to other packages.
-			.library(
-					name: "ComposableArchitecture",
-					targets: ["ComposableArchitecture"]),
+		// Products define the executables and libraries produced by a package, and make them visible to other packages.
+		.library(
+			name: "ComposableArchitecture",
+			targets: ["ComposableArchitecture"]),
+		.library(
+			name: "ComposableArchitectureTestSupport",
+			targets: ["ComposableArchitectureTestSupport"]),
 	],
 	dependencies: [
 		.package(url: "https://github.com/pointfreeco/swift-case-paths.git", from: "0.1.0")
 	],
 	targets: [
-			// Targets are the basic building blocks of a package. A target can define a module or a test suite.
-			// Targets can depend on other targets in this package, and on products in packages which this package depends on.
-			.target(
-					name: "ComposableArchitecture",
-					dependencies: ["CasePaths"]),
-			.testTarget(
-					name: "ComposableArchitectureTests",
-					dependencies: ["ComposableArchitecture"]),
+		// Targets are the basic building blocks of a package. A target can define a module or a test suite.
+		// Targets can depend on other targets in this package, and on products in packages which this package depends on.
+		.target(
+			name: "ComposableArchitecture",
+			dependencies: ["CasePaths"]),
+		.target(
+			name: "ComposableArchitectureTestSupport",
+			dependencies: ["ComposableArchitecture"]),
+		.testTarget(
+			name: "ComposableArchitectureTests",
+			dependencies: ["ComposableArchitecture"]),
 	]
 )
